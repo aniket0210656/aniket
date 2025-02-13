@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void rotateLeft(int arr[], int n, int d) {
+    d = d % n;
+    int* temp = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        temp[i] = arr[(i + d) % n];
+    }
+    for (int i = 0; i < n; i++) {
+        arr[i] = temp[i];
+    }
+    free(temp);
+}
+
+int main() {
+    int n, d;
+    scanf("%d %d", &n, &d);
+    int* arr = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    rotateLeft(arr, n, d);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    free(arr);
+    return 0;
+}
